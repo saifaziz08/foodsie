@@ -1,0 +1,82 @@
+list of endpoints:
+Restaurant Login
+My Dashboard
+	Announcement:
+		- Announcements create
+		- My annoucnements check
+		- Announcements delete
+	Data:
+		Feedback:
+			- Check my most recent feedback
+			- Check feedback for a specific item
+			- Check feedback for a specific user
+		Menu:
+			- Check Menu Item Popularity (by category) (in time)
+			- Check Menu Item Revenue (by category)
+		Customer:
+			- Check recurrent vs new
+			- Lead conversion rate
+			- Average tip for the person, area, my rest, meal, time
+			- Average meal for the person, area, my rest, meal, time
+			- Total meal/tip for person, my rest, meal, time
+			- popularity of area at given time
+		Revenue:
+			- Revenue/time
+			- Revenue/customer_group
+
+ENDPOINTS:
+
+--------------- Restaurant Side WEB
+	announcements:
+		- /restaurant/{rest_id}/announcements (POST)
+		- /restaurant/{rest_id}/announcements (GET)
+		- /restaurant/{rest_id}/announcements/{announcement_id} (GET)
+		- /restuarant/{rest_id}/announcements/{announcement_id} (DELETE)
+	data:
+		History:
+			- /restaurant/{rest_id}/transactions?starttime=1423523&endtime=2343414&item_id=2&user_ids=3
+		Feedback:
+			- /restaurant/{rest_id}/feedback?starttime=1423523&endtime=2343414&item_id=2&user_ids=3
+		Popularity:
+			- /restaurant/{rest_id}/popularity?starttime=1423523&endtime=2343414&item_id=2&user_ids=3
+		Revenue:
+			- /restaurant/{rest_id}/revenue?starttime=1423523&endtime=2343414&item_ids=2&user_ids=3&tip=True
+		Recurrent:
+			- /restaurant/{rest_id}/recurrent?starttime=1423523&endtime=2343414&user_ids=3
+			- /restaurant/{rest_id}/conversion?starttime=1423523&endtime=2343414&user_ids=3
+			- /restaurant/{rest_id}/churn?starttime=1423523&endtime=2343414&user_ids=3
+		Area:
+			- /restaurant/{rest_id}/area
+
+---------------- User Side APP
+	profile:
+		- users/{user_id}/profile (GET)
+		- users/{user_id}/profile (PUT)
+	feedback:
+		- users/{user_id}/feedback
+		- users/{user_id}/feedback/{feedback_id} (PUT)
+	restaurants:
+		- restaurants (GET)
+		- restaurants/{rest_id} (GET)
+		- restaurants/{rest_id}/menu (GET)
+	announcements:
+		- /announcements (GET)
+
+--------------- User Side Web
+	profile:
+		- users/{user_id}/profile (GET)
+		- users/{user_id}/profile (PUT)
+	history:
+		- /users/{user_id}/transactions?starttime=1423523&endtime=2343414&item_id=2&rest_ids=3
+
+--------------- POS APP
+	transactions:
+		- /restaurant/{rest_id}/transaction (POST)
+		- /restaurant/{rest_id}/transaction/{id} (GET)
+		- /restaurant/{rest_id}/transaction/{id} (DELETE)
+		- /restaurant/{rest_id}/transaction/{id} (PUT)
+		- /restaurant/{rest_id}/transaction/{id}/menu_item/{id} (POST)
+		- /restaurant/{rest_id}/transaction/{id}/menu_item/{id} (PUT)
+		- /restaurant/{rest_id}/transaction/{id}/menu_item/{id} (DELETE)
+		- /restaurant/{rest_id}/transaction/{id}/finalize (POST)
+
