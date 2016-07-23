@@ -52,32 +52,14 @@ def signin():
     abort(400)
 
 @app.route('/')
-@app.route('/Summary')
 def home():
-  return render_template('Summary.html')
+  return session['email']
 
-@app.route('/Help')
-def help():
-  return render_template('Help.html')
-  
-@app.route('/MenuItems')
-def menuItems():
-	return render_template('menuItems.html')
+@app.route('/about')
+def about():
+  return render_template('about.html')
 
-@app.route('/Orders')
-def orders():
-	return render_template('orders.html')
-	
-@app.route('/PaymentMethods')
-def paymentMethods():
-	return render_template('paymentMethods.html')
-
-@app.route('/Transactions')
-def transactions():
-	return render_template('transactions.html')
 @app.route('/contact', methods=['GET', 'POST'])
-
-
 def contact():
   form = ContactForm()
 
@@ -96,4 +78,4 @@ def contact():
       return render_template('contact.html', success=True)
 
   elif request.method == 'GET':
-    return render_template('contact.html', form=form)
+    return render_template('contact.html', form=form)f
